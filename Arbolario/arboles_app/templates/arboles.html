@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Arboles</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+        <!-- En este html necesitaremos un join, para unir las tablas... unir arboles y usuarios-->
+        <div class="contenedor">
+            <div class="header">
+                <div class="titulo">
+                    <h1>Forestal</h1>
+                    <h4>Un sitio para rastrear árboles plantados al azar.</h4>
+                </div>
+                    <div class="ordenar">
+                        <div class="header_arriba">
+                            <div class="misarboles">
+                                <a href="/usuario/cuenta/{{ session['id_usuario'] }}"> Mis arboles</a>
+                            </div>
+                            <div>
+                                    <h2>Bienvenid@{{session['nombre']}}!</h2>
+                            </div>
+                        </div>
+                        <div class="header_abajo">
+                            <div class="misarboles">
+                            <form action="/formulario/arboles" method="GET"> 
+                                <button type="submit" class="btn btn-primary">Planta un árbol</button>
+                            </form>
+                        </div>
+                            <form action="/logout" method="POST"> 
+                                <button type="submit" class="btn btn-secondary">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div class="row p-4">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Especies</th>
+                    <th scope="col">Plantado por</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for arbol in lista_arboles %}
+                    <tr>
+                        <td scope="row">{{ arbol.especies }}</td>
+                        <td>{{ arbol.usuario.nombre }} {{ arbol.usuario.apellido }}</td>
+                        <td class="d-flex">
+                            <form action="/arboles/{{ arbol.id }}" method="GET">
+                                <button type="submit" class="btn btn-primary">
+                                    Detalles
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    </body>
+</html>

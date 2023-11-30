@@ -1,0 +1,40 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    flex:1;
+    padding: 20px;
+}
+
+.titulo{
+    flex:1
+}
+
+.ordenar{
+    display: flex;
+    flex-direction: column;
+}
+
+.header_arriba{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_abajo{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.misarboles{
+    margin-right: 30px;
+}
+
+.contenedor_form{
+    width: 600px;
+    padding: 10px;
+}

@@ -1,0 +1,16 @@
+.contene{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+}
+.Donde{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+
+
+}
+.Donde h4 {
+    margin-left: 10px;
+}
